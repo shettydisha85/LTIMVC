@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+@using System.Collections.Generic;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Reg Form using HTML Helpers</title>
+</head>
+<body>
+    <div>
+        @{
+            List<SelectListItem> nation = new List<SelectListItem>
+                {
+                new SelectListItem{Text="India",Value="IN"},
+                new SelectListItem{Text="America",Value="US"},
+                new SelectListItem{Text="United Kingdom",Value="UK"}
+                };
+            List<SelectListItem> hobby = new List<SelectListItem>
+                {
+                    new SelectListItem{Text="Reading",Value="Read"},
+                    new SelectListItem{Text="Cooking",Value="cook"},
+                    new SelectListItem{Text="Television",Value="TV"},
+                    new SelectListItem{Text="Music",Value="Music"},
+                    new SelectListItem{Text="Sleeping",Value="Sleep"},
+                };
+        }
+    </div>
+    <div>
+        <form>
+            <table border="1">
+                <tr>
+                    <td>Enter Name</td>
+                    <td>@Html.TextBox("txtname")</td>
+                </tr>
+                <tr>
+                    <td>Enter Address</td>
+                    <td>@Html.TextArea("txtadd")</td>
+                </tr>
+                <tr>
+                    <td>Enter Password</td>
+                    <td>@Html.Password("txtpass")</td>
+                </tr>
+                <tr>
+                    <td>Enter Gender</td>
+                    <td>
+                        @Html.RadioButton("gender", "M")M
+                        @Html.RadioButton("gender", "F")F
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Qualification</td>
+                    <td>
+                        @Html.CheckBox("q", "BE")BE
+                        @Html.CheckBox("q", "ME")ME
+                        @Html.CheckBox("q", "MBA")MBA
+                        @Html.CheckBox("q", "ME")ME
+                        @Html.CheckBox("q", "Others")Others
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Country</td>
+                    <td>
+                        @Html.DropDownList("ddlnation", nation)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Enter Hobby</td>
+                    <td>
+                        @Html.DropDownList("ddlhobby", hobby, new { multiple = "multiple" })
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><input type="submit" /></td>
+                    <td><input type="reset" /></td>
+                </tr>
+        </form>
+
+        </table>
+
+    </div>
+</body>
+</html>

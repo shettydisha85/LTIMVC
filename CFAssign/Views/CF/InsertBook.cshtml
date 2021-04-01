@@ -1,0 +1,28 @@
+﻿@model CFAssign.Models.Book
+@{ ViewBag.Title = "InsertBook"; }
+
+<h2>InsertBook</h2>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+                <table>
+                    <tr>
+                        <td>Enter Title: @Html.TextBoxFor(x => x.Title)</td>
+                    </tr>
+                    <tr>
+                        <td>Enter Author Name: @Html.TextBoxFor(x => x.Author_name)</td>
+                    </tr>
+                    <tr>
+                        <td>Enter Category: @Html.TextBoxFor(x => x.Category)</td>
+                    </tr>
+                    <tr>
+                        <td>Enter Price: @Html.TextBoxFor(x => x.Money)</td>
+                    </tr>
+                    <tr>
+                        <td>Select Publisher Name: @Html.DropDownListFor(x => x.Pid, ViewData["data"] as SelectList)</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Insert Book Details" /></td>
+                    </tr>
+                </table>            }

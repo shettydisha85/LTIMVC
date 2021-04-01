@@ -1,0 +1,52 @@
+﻿@model CodeFirstMVC.Models.StudentInfo
+@{
+    ViewBag.Title = "InsertStudent";
+}
+
+<h2>InsertStudent</h2>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+@*<div>
+Enter StudentId: @Html.TextBoxFor(x => x.StudentId)
+@Html.ValidationMessage("StudentInfo", "Course Name cannot be blank")
+</div>*@
+<div>
+Enter StudentName: @Html.TextBoxFor(x => x.StudentName)
+@Html.ValidationMessage("StudentInfo", "Course Name cannot be blank")
+</div>
+<div>
+Enter Branch: @Html.TextBoxFor(x => x.Branch)
+@Html.ValidationMessage("StudentInfo", "Course Branch cannot be blank")
+</div>
+<div>
+Enter Sem: @Html.TextBoxFor(x => x.Sem)
+@Html.ValidationMessage("StudentInfo", "Course sem cannot be blank")
+</div>
+<div>
+Enter AggrMarks: @Html.TextBoxFor(x => x.AggrMarks)
+@Html.ValidationMessage("StudentInfo", "Course AggMarks cannot be blank")
+</div>
+
+
+
+
+<div>
+Select course:@Html.DropDownListFor(x=>x.CourseId,ViewData["data"] as SelectList)
+
+
+
+</div>
+
+
+
+<div>
+<input type="submit" value="Insert Student" />
+</div>}
+
+
+
+<div>
+@Html.ActionLink("Insert course","InsertCourse")
+</div>

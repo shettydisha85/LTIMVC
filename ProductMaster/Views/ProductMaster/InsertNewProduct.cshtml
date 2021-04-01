@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "InsertNewProduct";
+}
+
+<h2>InsertNewProduct</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)//mvc engine will display the msg coming from controller to view
+    <table border="1">
+        <tr>
+            <td>Product Id</td>
+            <td>@Html.TextBox("PId")</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>@Html.TextBox("txtprodname")</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>@Html.TextBox("txtdesc")</td>
+        </tr>
+        <tr>
+            <td>Manufacturer</td>
+            <td>@Html.TextBox("txtmanu")</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <input type="number" name="txtprice" />
+            </td>
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td>
+                @Html.DropDownList("ddlcat", new List<SelectListItem> {
+       new SelectListItem{ Text="Mobiles and Tablets",Value="M&T"},
+       new SelectListItem{ Text="Computers",Value="Comp"},
+       new SelectListItem{ Text="Smartwatch",Value="Smartwatch"}})
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Add Product" /></td>
+            <td><input type="reset" value="Cancel" /></td>
+        </tr>
+    </table>
+}
+<div>
+    @Html.ActionLink("Get Product", "GetProducts")
+    @*this is a html helper for <a href="">*@
+</div>
+<div>
+    @Html.ActionLink("Select Product by Category", "GetProductByCategory")
+</div>
+
+<div>
+    @Html.ActionLink("Place Order", "InsertOrder")
+</div>
+
+<div>
+    @Html.ActionLink("Get Order Details", "GetOrderDetails")
+</div>
+
+<div>
+    @Html.ActionLink("Select Order", "SelectOrderByID")
+</div>

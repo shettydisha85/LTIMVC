@@ -1,0 +1,28 @@
+﻿@model ProductMaster.Models.Product
+@{
+    ViewBag.Title = "DeleteProduct";
+}
+
+<h2>DeleteProduct</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Prodid:<input type="text" name="PId" value=@Model.PId readonly />
+    </div>
+    <div>
+        ProdName:<input type="text" name="txtprodname" value=@Model.PName readonly />
+    </div>
+    <div>
+        ProdDesc:<input type="text" name="txtdesc" value=@Model.PDesc readonly/>
+    </div>
+    <div>
+        Manufacturer:<input type="text" name="txtmanu" value=@Model.PManu readonly/>
+    </div>
+    <div>
+        Price:<input type="text" name="txtprice" value=@Model.Price readonly/>
+    </div>
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿@model RegFormMVC.Models.ProjectInfo
+@{
+    ViewBag.Title = "InsertProject";
+}
+
+<h2>InsertProject</h2>
+
+<form method="post">
+    @Html.ValidationSummary(true)
+    <div>
+        Enter Project Name
+        @Html.TextAreaFor(x => x.projname)
+        @Html.ValidationMessageFor(x => x.projname)
+    </div>
+    <div>
+        Enter Domain Name
+        @Html.TextAreaFor(x => x.domain)
+        @Html.ValidationMessageFor(x => x.domain)
+    </div>
+    <div>
+        <input type="submit" value="NewProject" />
+        </div>
+    <div>
+        <input type="reset" value="Cancel" />
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Insert Employee","InsertNewEmployee")
+</div>

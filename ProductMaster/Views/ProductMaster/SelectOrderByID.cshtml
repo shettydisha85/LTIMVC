@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "SelectOrderByID";
+}
+
+<h2>SelectOrderByID</h2>
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+                <div>
+                    Order ID : <input type="text" name="orderid" />
+                </div>
+                                <div>
+                                    <input type="submit" value="Display" name="command" />
+                                </div> if (ViewBag.data != null)
+                                                {
+                                <table border="1">
+                                    <tr>
+                                        <th>ProdId</th>
+                                        <th>OrderId</th>
+                                        <th>Qty</th>
+                                        <th>TotalAmount</th>
+                                        <th>Payment Mode</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    <tr>
+                                        <td>@ViewBag.data.orderid</td>
+                                        <td>@ViewBag.data.pid</td>
+                                        <td>@ViewBag.data.prodqty</td>
+                                        <td>@ViewBag.data.totalamt</td>
+                                        <td>@ViewBag.data.paymentmode</td>
+                                        <td>@ViewBag.data.orderstatus</td>
+                                    </tr>
+                                </table>}
+                                            }
+<div>
+    @Html.ActionLink("Insert New Product", "InsertNewProduct")
+</div>
+

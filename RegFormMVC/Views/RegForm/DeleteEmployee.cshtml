@@ -1,0 +1,32 @@
+﻿@model RegFormMVC.Models.Employee
+@{
+    ViewBag.Title = "DeleteEmployee";
+}
+
+<h2>DeleteEmployee</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        Empid:<input type="text" name="eid" value=@Model.EmpID readonly />
+    </div>
+    <div>
+        EmpName:<input type="text" name="name" value=@Model.EmpName readonly />
+    </div>
+    <div>
+        Dept:<input type="text" name="dept" value=@Model.Dept readonly />
+    </div>
+    <div>
+        Designation:<input type="text" name="desg" value=@Model.Desg readonly />
+    </div>
+    <div>
+        Salary:<input type="text" name="sal" value=@Model.Salary />
+    </div>
+    <div>
+        <input type="submit" value="Delete" />
+    </div>
+    <div>
+        ProjId : <input type="text" name="pid" value=@Model.projid readonly/>
+    </div>
+}
+
+

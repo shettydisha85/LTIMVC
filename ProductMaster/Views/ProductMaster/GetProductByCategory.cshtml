@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "GetProductByCategory";
+}
+
+<h2>GetProductByCategory</h2>
+<form method="post">
+    @Html.ValidationSummary(true)
+    <div>
+        Enter Product Category<input type="text" name="ddlcat" />
+    </div>
+    <div>
+        <input type="submit" value="Select" />
+    </div>
+    @if (Session["pro"] != null)
+    {
+        IQueryable<ProductMaster.Models.Product> prod = (IQueryable<ProductMaster.Models.Product>)Session["pro"];//typecasting
+        <table border="1">
+            @foreach (var e in prod)
+            {
+                <tr>
+                    <td>@e.PName</td>
+                    <td>@e.PDesc</td>
+                    <td>@e.PManu</td>
+                    <td>@e.Price</td>
+                    <td>@e.PCat</td>
+                </tr>
+            }
+        </table>
+    }
+</form>
+
+<div>
+    @Html.ActionLink("Insert Product", "InsertNewProduct")
+</div>
+
+
+

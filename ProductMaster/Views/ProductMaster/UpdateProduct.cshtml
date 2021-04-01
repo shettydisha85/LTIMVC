@@ -1,0 +1,30 @@
+﻿@model ProductMaster.Models.Product
+@{
+    ViewBag.Title = "UpdateProduct";
+}
+
+<h2>UpdateProduct</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        Prodid:<input type="text" name="PId" value=@Model.PId readonly />
+    </div>
+    <div>
+        ProdName:<input type="text" name="txtprodname" value=@Model.PName />
+    </div>
+    <div>
+        ProdDesc:<input type="text" name="txtdesc" value=@Model.PDesc />
+    </div>
+    <div>
+        Manufacturer:<input type="text" name="txtmanu" value=@Model.PManu />
+    </div>
+    <div>
+        Price:<input type="text" name="txtprice" value=@Model.Price />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+}
+
+

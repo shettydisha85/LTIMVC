@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ProductMaster.Models.CustomOrderDetails>
+@{
+    ViewBag.Title = "GetOrderDetails";
+}
+
+<h2>GetOrderDetails</h2>
+<table border="1">
+    <tr>
+        <th>Order Id</th>
+        <th>ProdName</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total Amount</th>
+        <th>Payment Mode</th>
+        <th>Payment Status</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.OrderId</td>
+            <td>@m.ProdName</td>
+            <td>@m.Price</td>
+            <td>@m.Quantity</td>
+            <td>@m.TotalAmount</td>
+            <td>@m.PaymentMode</td>
+            <td>@m.PaymentStatus</td>
+        </tr>
+    }
+</table>
+
+<div>
+    @Html.ActionLink("New Product", "InsertNewProduct")
+</div>
+

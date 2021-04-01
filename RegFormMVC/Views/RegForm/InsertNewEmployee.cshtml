@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "InsertNewEmployee";
+}
+
+<h2>InsertNewEmployee</h2>
+@*<form></form>*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)//mvc engine will display the msg coming from controller to view
+    <table border="1">
+        <tr>
+            <td>Enter EmpId</td>
+            <td>@Html.TextBox("txtempid")</td>
+        </tr>
+        <tr>
+            <td>Enter EmpName</td>
+            <td>@Html.TextBox("txtempname")</td>
+        </tr>
+        <tr>
+            <td>Enter Dept</td>
+            <td>
+                @Html.DropDownList("ddldept", new List<SelectListItem> {
+       new SelectListItem{ Text="IT",Value="IT"},
+       new SelectListItem{ Text="Accounts",Value="Accounts"},
+       new SelectListItem{ Text="HR",Value="HR"}})
+            </td>
+        </tr>
+        <tr>
+            <td>Select Desg</td>
+            <td>
+                <select name="ddldesg">
+                    <option value="Trainee">Trainee</option>
+                    <option value="Sr Exec">Senior Executive</option>
+                    <option value="Manager">Manager</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter Salary</td>
+            <td>
+                <input type="number" name="txtsalary" />
+            </td>
+        </tr>
+        <tr>
+            <th>Enter Project ID :</th>
+            <td>@Html.DropDownList("ddlpid", ViewData["proj"] as SelectList)</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="New Registration" /></td>
+            <td><input type="reset" value="Cancel" /></td>
+        </tr>
+    </table>
+}
+<div>
+    @Html.ActionLink("Select Employee", "GetEmployees")
+    @*this is a html helper for <a href="">*@
+</div>
+<div>
+    @Html.ActionLink("Select Employee by Dept and Salary", "GetEmployeeByDeptSalary")
+</div>
+<div>
+    @Html.ActionLink("Insert Project", "InsertProject")
+</div>
+
+<div>
+    @Html.ActionLink("Get EmpProj Details", "GetEmpProject")
+</div>
+<div>
+    @Html.ActionLink("Call SP","SelectAndUpdateProjectSP")
+</div>

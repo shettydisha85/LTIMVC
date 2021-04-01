@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "SelectOrder";
+}
+
+<h2>SelectOrder</h2>
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+                <div>Orderid:<input type="text" name="oid" /></div>
+                                <div>
+                                    <input type="submit" value="Submit" name="command" />
+                                </div> if (ViewBag.data != null)
+                                                {
+                                <table border="1">
+                                    <tr>
+                                        <td>Oid</td>
+                                        <td><input type="text" name="oid" value=@ViewBag.data.Oid readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pid</td>
+                                        <td><input type="text" name="pid" value=@ViewBag.data.pid readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quantity</td>
+                                        <td><input type="text" name="qnt" value="@ViewBag.data.Quantity" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total amoun</td>
+                                        <td><input type="text" name="total" value=@ViewBag.data.TotalAmount readonly /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payment mode</td>
+                                        <td><input type="text" name="mode" value=@ViewBag.data.PaymentMode /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>status</td>
+                                        <td><input type="text" name="status" value=@ViewBag.data.Status /></td>
+                                    </tr>
+
+
+                                </table>}
+                                            }
+

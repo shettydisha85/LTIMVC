@@ -1,0 +1,19 @@
+﻿@model CodeFirstMVC.Models.CourseInfo
+@{
+    ViewBag.Title = "InsertCourse";
+}
+
+<h2>InsertCourse</h2>
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+                <div>
+                    Enter Course Name: @Html.TextBoxFor(x => x.CourseName)
+                    @Html.ValidationMessage("CourseInfo", "CourseName Cant be blank");
+                </div>
+                                <div>
+                                    <input type="submit" value="Insert Course" />
+                                </div>}
+<div>
+    @Html.ActionLink("Insert Student","InsertStudent")
+</div>

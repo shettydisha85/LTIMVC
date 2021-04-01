@@ -1,0 +1,40 @@
+﻿@using System.Collections.Generic;
+@using RazorExamples;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    @{ 
+        List<empinfo> emplist = new List<empinfo>
+        {
+            new empinfo{EmpID=1, Name="Sam", Dept="IT",Salary=12345},
+            new empinfo{EmpID=2, Name="Tam", Dept="IT",Salary=54321},
+            new empinfo{EmpID=3, Name="Pam", Dept="IT",Salary=98765}
+        };
+    }
+    <div>
+    <table border="1">
+        <tr>
+            <th> EmpID</th>
+            <th> Name</th>
+            <th> Dept</th>
+            <th> Salary</th>
+        </tr>
+        @foreach(var e in emplist)
+        {
+            <tr>
+                <td>@e.EmpID</td>
+                <td>@e.Name</td>
+                <td>@e.Dept</td>
+                <td>@e.Salary</td>
+            </tr>
+        }
+    </table>
+    </div>
+</body>
+</html>

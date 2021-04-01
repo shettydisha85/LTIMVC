@@ -1,0 +1,47 @@
+﻿@model ProductMaster.Models.OrderInfo
+@{
+    ViewBag.Title = "InsertOrder";
+}
+
+<h2>InsertProduct</h2>
+<form method="post">
+    @Html.ValidationSummary(true)
+   @* <div>
+        Enter Order Id
+        @Html.TextAreaFor(x => x.orderid)
+        @Html.ValidationMessageFor(x => x.orderid)
+    </div>*@
+    <div>
+        Enter Order Quantity
+        @Html.TextAreaFor(x => x.prodqty)
+        @Html.ValidationMessageFor(x => x.prodqty)
+    </div>
+    <div>
+        Enter Total Amount
+        @Html.TextAreaFor(x => x.totalamt)
+        @Html.ValidationMessageFor(x => x.totalamt)
+    </div>
+    <div>
+        Enter Payment Mode
+        @Html.TextAreaFor(x => x.paymentmode)
+        @Html.ValidationMessageFor(x => x.paymentmode)
+    </div>
+    <div>
+        Enter Order Status
+        @Html.TextAreaFor(x => x.orderstatus)
+        @Html.ValidationMessageFor(x => x.orderstatus)
+    </div>
+    <div>
+        Enter Product Id
+        @Html.DropDownList("PId",ViewData["prod"] as SelectList)
+    </div>
+    <div>
+        <input type="submit" value="Order" />
+    </div>
+    <div>
+        <input type="reset" value="Cancel" />
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Insert Product", "InsertNewProduct")
+ </div>

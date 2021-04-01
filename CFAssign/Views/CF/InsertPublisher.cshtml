@@ -1,0 +1,25 @@
+﻿@model CFAssign.Models.Publisher
+@{ ViewBag.Title = "InsertPublisher"; }
+
+<h2>InsertPublisher</h2>
+
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary(true)
+                <table>
+                    <tr>
+                        <td>Publisher Name: @Html.TextBoxFor(x => x.pname)</td>
+                        <td>@Html.ValidationMessageFor(x => x.pname, "Name cannot be blank")</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No: @Html.TextBoxFor(x => x.mob_no)</td>
+                        <td>@Html.ValidationMessageFor(x => x.mob_no, "Mobile number cannot be blank")</td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Insert" /></td>
+                    </tr>
+                </table>            }
+
+<div>
+    @Html.ActionLink("Insert Book Details", "InsertBook")
+</div>

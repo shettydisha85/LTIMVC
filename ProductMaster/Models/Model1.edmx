@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LTIMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="prodqty" Type="int" Nullable="false" />
+          <Property Name="totalamt" Type="int" Nullable="false" />
+          <Property Name="paymentmode" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="orderstatus" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pid" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="PName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PDesc" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PManu" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="PCat" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__OrderInfo__pid__2F10007B">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PId" />
+            </Principal>
+            <Dependent Role="OrderInfo">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SelectOrderbyOrderId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orderid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="LTIMVCModelStoreContainer">
+          <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OrderInfo__pid__2F10007B" Association="Self.FK__OrderInfo__pid__2F10007B">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderInfo" EntitySet="OrderInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LTIMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="PId" />
+          </Key>
+          <Property Name="PId" Type="Int32" Nullable="false" />
+          <Property Name="PName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PManu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PCat" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OrderInfoes" Relationship="LTIMVCModel.FK__OrderInfo__pid__2F10007B" FromRole="Product" ToRole="OrderInfo" />
+        </EntityType>
+        <EntityContainer Name="LTIMVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="OrderInfoes" EntityType="LTIMVCModel.OrderInfo" />
+          <AssociationSet Name="FK__OrderInfo__pid__2F10007B" Association="LTIMVCModel.FK__OrderInfo__pid__2F10007B">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderInfo" EntitySet="OrderInfoes" />
+          </AssociationSet>
+          <FunctionImport Name="SelectOrderbyOrderId" ReturnType="Collection(LTIMVCModel.SelectOrderbyOrderId_Result)">
+            <Parameter Name="orderid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="prodqty" Type="Int32" Nullable="false" />
+          <Property Name="totalamt" Type="Int32" Nullable="false" />
+          <Property Name="paymentmode" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="orderstatus" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pid" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="LTIMVCModel.FK__OrderInfo__pid__2F10007B" FromRole="OrderInfo" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__OrderInfo__pid__2F10007B">
+          <End Type="LTIMVCModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="LTIMVCModel.OrderInfo" Role="OrderInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="PId" />
+            </Principal>
+            <Dependent Role="OrderInfo">
+              <PropertyRef Name="pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SelectOrderbyOrderId_Result">
+          <Property Type="Int32" Name="orderid" Nullable="false" />
+          <Property Type="Int32" Name="prodqty" Nullable="false" />
+          <Property Type="Int32" Name="totalamt" Nullable="false" />
+          <Property Type="String" Name="paymentmode" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="orderstatus" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="pid" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LTIMVCModelStoreContainer" CdmEntityContainer="LTIMVCEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="LTIMVCModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="PDesc" ColumnName="PDesc" />
+                <ScalarProperty Name="PManu" ColumnName="PManu" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PCat" ColumnName="PCat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderInfoes">
+            <EntityTypeMapping TypeName="LTIMVCModel.OrderInfo">
+              <MappingFragment StoreEntitySet="OrderInfo">
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="orderstatus" ColumnName="orderstatus" />
+                <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+                <ScalarProperty Name="totalamt" ColumnName="totalamt" />
+                <ScalarProperty Name="prodqty" ColumnName="prodqty" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SelectOrderbyOrderId" FunctionName="LTIMVCModel.Store.SelectOrderbyOrderId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LTIMVCModel.SelectOrderbyOrderId_Result">
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="prodqty" ColumnName="prodqty" />
+                <ScalarProperty Name="totalamt" ColumnName="totalamt" />
+                <ScalarProperty Name="paymentmode" ColumnName="paymentmode" />
+                <ScalarProperty Name="orderstatus" ColumnName="orderstatus" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

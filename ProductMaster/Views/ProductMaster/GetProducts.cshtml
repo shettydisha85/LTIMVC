@@ -1,0 +1,38 @@
+﻿@model List<ProductMaster.Models.Product>
+@{
+    ViewBag.Title = "GetProducts";
+}
+
+<h2>GetProducts</h2>
+<table border="1">
+    <tr>
+        <th>Product Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Category</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+<tr>
+    <td>@m.PId </td>
+    <td>@m.PName</td>
+    <td>@m.PDesc</td>
+    <td>@m.PManu</td>
+    <td>@m.Price</td>
+    <td>@m.PCat</td>
+
+    <td>@Html.ActionLink("Edit:" + m.PId, "UpdateProduct", "ProductMaster", new { id = m.PId }, null)</td>
+
+    <td>@Html.ActionLink("Delete:" + m.PId, "DeleteProduct", "ProductMaster", new { id = m.PId }, null)</td>
+</tr>
+    }
+
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Insert Product", "InsertNewProduct")
+    @*this is a html helper for <a href="">*@
+</div>
